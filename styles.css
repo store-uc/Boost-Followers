@@ -1,0 +1,67 @@
+/* إعدادات عامة */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  direction: rtl;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+/* الهيدر */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #333;
+  color: #fff;
+}
+
+header .logo h1 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+header .social-icons {
+  display: flex;
+  gap: 10px;
+}
+
+header .social-icon {
+  text-decoration: none;
+  color: #fff;
+  font-size: 18px;
+  padding: 10px;
+  background-color: #444;
+  border-radius: 50%;
+  text-align: center;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header .social-icon:hover {
+  background-color: #777;
+}
+
+/* تصميم الصفحة */
+main {
+  text-align: center;
+  padding: 50px;
+}
+
+main h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+main p {
+  font-size: 18px;
+}
