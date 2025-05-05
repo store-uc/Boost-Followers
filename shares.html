@@ -214,7 +214,7 @@
   </header>
 
   <h1 class="page-title">
-    <img src="share.png" alt="Boost Followers" style="max-width: 25%; height: auto;" />
+    <img src="views.png" alt="Boost Followers" style="max-width: 25%; height: auto;" />
   </h1>
   
   <section class="content">
@@ -279,7 +279,7 @@
     followersInput.addEventListener('input', () => {
       const count = parseInt(followersInput.value);
       if (!isNaN(count) && count >= 5000) {
-        const price = (count / 10000) * 250;
+        const price = (count / 10000) * 300;
         currentPrice = price;
         priceBox.textContent = `${price.toFixed(2)} جنيه`;
         paymentText.innerHTML = `
