@@ -279,7 +279,7 @@
     followersInput.addEventListener('input', () => {
       const count = parseInt(followersInput.value);
       if (!isNaN(count) && count >= 5000) {
-        const price = (count / 10000) * 250;
+        const price = (count / 10000) * 800;
         currentPrice = price;
         priceBox.textContent = `${price.toFixed(2)} جنيه`;
         paymentText.innerHTML = `
