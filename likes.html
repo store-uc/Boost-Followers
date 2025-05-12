@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>طلب زيادة متابعين تيك توك - Boost Followers</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Cairo', sans-serif;
+      background: #f8f9fa;
+      color: #333;
+    }
+
+    header {
+      background: #fff;
+      padding: 1rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #007fff;
+    }
+
+    .page-title {
+      text-align: center;
+      padding: 3rem 0rem 1rem;
+      font-size: 0rem;
+      color: #2c3e50;
+    }
+
+    .content {
+      max-width: 600px;
+      margin: auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+      color: #2c3e50;
+    }
+
+    input[type="number"],
+    input[type="url"],
+    input[type="text"],
+    input[type="file"] {
+      width: 89%;
+      padding: 0.8rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid #ccc;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .followers-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .followers-container label {
+      margin-bottom: 0;
+    }
+
+    .price-box {
+      background: #e9f5ff00;
+      padding: 0rem;
+      border-radius: 0.5rem;
+      color: #007BFF;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+
+    button {
+      width: 100%;
+      background: #007BFF;
+      color: #fff;
+      padding: 1rem;
+      border: none;
+      border-radius: 0.7rem;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    /* Modal Styling */
+    #paymentModal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      right: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.5);
+    }
+
+    #paymentModal .modal-content {
+      background-color: #fff;
+      margin: 10% auto;
+      padding: 2rem 1.5rem;
+      border-radius: 1rem;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      box-sizing: border-box;
+      position: relative;
+      text-align: right;
+    }
+
+    #paymentModal .modal-content img {
+      width: 35%;
+      max-width: 300px;
+      display: block;
+      margin: 0 auto 1rem;
+      border-radius: 10px;
+    }
+
+    #paymentModal .modal-content p {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    #paymentModal .modal-content strong.price {
+      color: #e63946;
+      font-size: 1.3rem;
+    }
+
+    #paymentModal .modal-content strong.number {
+      color: #007BFF;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    #paymentModal input[type="text"],
+    #paymentModal input[type="file"] {
+      width: 90%;
+      padding: 0.8rem;
+      margin-bottom: 1.2rem;
+      border: 1px solid #ccc;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+    }
+
+    #paymentModal .close {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #888;
+      cursor: pointer;
+      position: absolute;
+      top: 10px;
+      left: 15px;
+    }
+
+    /* Success/Error Message Modal Styling */
+    #messageModal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      max-width: 500px;
+      background-color: rgba(0,0,0,0.7);
+      color: white;
+      padding: 1.5rem;
+      border-radius: 35px;
+      text-align: center;
+    }
+
+    #messageModal .close {
+      color: white;
+      font-size: 1.5rem;
+      font-weight: bold;
+      position: absolute;
+      top: 5px;
+      right: 10px;
+      cursor: pointer;
+    }
+
+    footer {
+      background-color: #fff;
+      color: #2c3e50;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 9rem;
+      font-size: 0.9rem;
+      box-shadow: 0 -2px 4px rgba(0,0,0,0.05);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">Boost Followers</div>
+  </header>
+
+  <h1 class="page-title">
+    <!-- <img src="likes.png" alt="Boost Followers" style="max-width: 25%; height: auto;" /> -->
+  </h1>
+  
+  <section class="content">
+    <form id="orderForm">
+      <div class="followers-container">
+        <label for="followers">عدد اللايكات المطلوب</label>
+        <div class="price-box" id="price">0.00 جنيه</div>
+      </div>
+
+      <input type="number" id="followers" name="followers" min="5000" step="10" required placeholder="أكتب عدد المتابعين المطلوب">
+
+      <label for="link">ضع رابط الفيديو هنا</label>
+      
+      <input type="url" id="link" name="link" required placeholder="https://www.tiktok.com">
+
+      <button type="button" onclick="openModal()">طلب الدفع</button>
+    </form>
+  </section>
+
+  <!-- Payment Modal -->
+  <div id="paymentModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+
+      <img src="money.png" alt="Boost Followers" />
+
+      <p id="paymentText">
+        يرجى تحويل مبلغ 
+        <strong class="price">700.00 جنيه</strong> 
+        إلى رقم فودافون كاش: 
+        <strong class="number">01080849091</strong> 
+        ثم تعبئة البيانات التالية:
+      </p>
+
+      <label for="fromNumber">رقم الهاتف الذي قمت بالتحويل منه</label>
+      <input type="text" id="fromNumber" placeholder="أدخل رقم الهاتف" required>
+
+      <label>صورة التحويل (سكرين شوت)</label>
+      <input type="file" accept="image/*" id="screenshot" required>
+
+      <button type="button" onclick="submitPayment()">إرسال الطلب</button>
+    </div>
+  </div>
+
+  <!-- Success/Error Message Modal -->
+  <div id="messageModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeMessageModal()">&times;</span>
+      <p id="messageContent" style="font-size: 1.2rem;"></p>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 جميع الحقوق محفوظة - Boost Followers
+  </footer>
+
+  <script>
+    const followersInput = document.getElementById('followers');
+    const priceBox = document.getElementById('price');
+    const paymentText = document.getElementById('paymentText');
+    let currentPrice = 0;
+
+    followersInput.addEventListener('input', () => {
+      const count = parseInt(followersInput.value);
+      if (!isNaN(count) && count >= 5000) {
+        const price = (count / 10000) * 500;
+        currentPrice = price;
+        priceBox.textContent = `${price.toFixed(2)} جنيه`;
+        paymentText.innerHTML = `
+          يرجى تحويل مبلغ 
+          <strong class="price">${price.toFixed(2)} جنيه</strong> 
+          إلى رقم فودافون كاش: 
+          <strong class="number">01080849091</strong> 
+          ثم تعبئة البيانات التالية:
+        `;
+      } else {
+        priceBox.textContent = 'الحد الأدنى للطلب هو 5000 لايك.';
+        paymentText.innerHTML = `
+          يرجى تحويل المبلغ إلى رقم فودافون كاش: 
+          <strong class="number">01080849091</strong>
+        `;
+      }
+    });
+
+    function openModal() {
+      const count = parseInt(followersInput.value);
+      if (isNaN(count) || count < 5000) {
+        showMessage(" الرجاء إدخال عدد لا يقل عن 5000 لايك.");
+        return;
+      }
+      document.getElementById('paymentModal').style.display = "block";
+    }
+
+    function closeModal() {
+      document.getElementById('paymentModal').style.display = "none";
+    }
+
+    function closeMessageModal() {
+      document.getElementById('messageModal').style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      const modal = document.getElementById('paymentModal');
+      const msgModal = document.getElementById('messageModal');
+      if (event.target == modal) closeModal();
+      if (event.target == msgModal) closeMessageModal();
+    }
+
+    function showMessage(message, duration = 4000) {
+      const modal = document.getElementById('messageModal');
+      const content = document.getElementById('messageContent');
+      content.innerHTML = message;
+      modal.style.display = "block";
+      if (duration > 0) {
+        setTimeout(() => {
+          modal.style.display = "none";
+        }, duration);
+      }
+    }
+
+function sendToTelegram(followers, link, phone, screenshot) {
+  const BOT_TOKEN = "7722422574:AAGBP5AeJPdAs9Gs0dJOU7_rSLOdrIKimfI";
+  const CHAT_ID = "7336270350";
+  const caption = `
+طلب جديد لزيادة المتابعين:
+عدد المتابعين: ${followers}
+رابط الحساب: ${link}
+رقم الهاتف: ${phone}
+  `;
+
+  const formData = new FormData();
+  formData.append('chat_id', CHAT_ID);
+  formData.append('caption', caption);
+  formData.append('photo', screenshot);
+
+  fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`, {
+    method: 'POST',
+    body: formData
+  })
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error('Error sending to Telegram:', error));
+}
+
+
+    function submitPayment() {
+      const phone = document.getElementById('fromNumber').value.trim();
+      const screenshot = document.getElementById('screenshot').files[0];
+      const followers = followersInput.value;
+      const link = document.getElementById('link').value;
+
+      if (!phone || !screenshot) {
+        showMessage(" يرجى تعبئة جميع الحقول وإرفاق صورة التحويل.");
+        return;
+      }
+
+      showMessage(" تم إرسال الطلب بنجاح! سنتواصل معك بعد تأكيد الدفع.");
+
+      sendToTelegram(followers, link, phone, screenshot);
+
+      closeModal();
+      document.getElementById('orderForm').reset();
+      document.getElementById('price').textContent = '0.00 جنيه';
+    }
+  </script>
+
+</body>
+</html>
